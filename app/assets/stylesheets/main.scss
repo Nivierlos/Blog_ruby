@@ -1,0 +1,88 @@
+
+body{
+	font-family: 'Arial', sans-serif;
+	background: $background-color;
+	line-height: 1.6em;
+}
+.navbar{
+	overflow: auto;
+	min-height: 100px;
+	background: #36424a;
+	color: #fff;
+	font-size: 19px;
+	border-radius: 0;
+}
+.navbar h1{
+	margin: 10px 0 0 0;
+	padding: 0;
+}
+
+.navbar a{
+	color: #fff !important;
+}
+.navbar a:hover{
+	color: $secondary-color;
+}
+.navbar ul{
+	margin-top: 22px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navabr-nav > .active > a:hover{
+	background: none;
+	color: $secondary-color !important;
+}
+.form-inline input[type='text']{
+	border-radius: 0;
+	height: 38px;
+	margin-right: 0;
+}
+.form-inline .btn{
+	border: 0;
+	height: 38px;
+	margin-top: 0;
+	border-radius: 0;
+	margin-left: 0px;
+}
+.form-inline .form-control{
+	background: #f4f4f4;
+	border: 1px solid $primary-color;
+}
+.btn-primary{
+	background: $primary-btn-color;
+}
+.btn{
+	border: none;
+	border-radius: 0;
+}
+.btn:hover{
+	background: #ccc;
+}
+main{
+	margin-top: 10px;
+}
+.post{
+	border: 1px #ccc solid;
+	background: #fff;
+	margin-top: 20px;
+}
+.post img{
+	width: 100%
+}
+.post-content{
+	padding: 20px;
+	box-sizing: border-box;
+}
+.post small{
+	background: $primary-color;
+	color: #fff;
+	display: block;
+	margin: 10px 0;
+	padding: 5px 10px;
+}
+footer{
+	background: $primary-color;
+	color: #fff;
+	text-align: center;
+	height: 60px;
+	padding-top: 20px;
+	margin-top: 20px;
+}
