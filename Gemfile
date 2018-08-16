@@ -57,3 +57,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+#gem 'paperclip', '~> 6.1'
+gem 'simple_form', '~> 4.0', '>= 4.0.1'
+#gem 'wysiwyg', '~> 0.0.1'
+#gem 'aws-sdk-s3'
+gem "refile", require: "refile/rails"
+#gem "refile-s3"

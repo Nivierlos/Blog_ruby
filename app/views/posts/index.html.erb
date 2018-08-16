@@ -1,46 +1,24 @@
-<div class="row">
+<div id="posts-index">
+    <% if @posts.exists? %>
+      <% @posts.each_slice(2) do |post|%>
+        <div class="row">
+          <% post.each do |post| %>
             <div class="col-md-6">
               <div class="post">
-                <img src="img/rails3.jpg">
-                <div class="pst-content">
-                  <h3>Lorem Ipsum</h3><small>Posted by Onzen Miluka</small>           
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ex odio, pulvinar et libero ultricies, facilisis commodo mauris. Morbi tincidunt nisl felis, vitae imperdiet est mollis vitae. Etiam ullamcorper diam a tincidunt finibus. Duis pretium porttitor turpis nec mattis. Nulla vehicula mauris elit, ac congue orci tincidunt id. </p>
-                  <a href="#" class="btn btn-primary"> Read more</a>
-                </div>
-              </div>
-              <div class="post">
-                <img src="img/rails3.jpg">
-                <div class="pst-content">
-                  <h3>Lorem Ipsum</h3><small>Posted by Onzen Miluka</small>           
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ex odio, pulvinar et libero ultricies, facilisis commodo mauris. Morbi tincidunt nisl felis, vitae imperdiet est mollis vitae. Etiam ullamcorper diam a tincidunt finibus. Duis pretium porttitor turpis nec mattis. Nulla vehicula mauris elit, ac congue orci tincidunt id. </p>
-                  <a href="#" class="btn btn-primary"> Read more</a>
+                <div class="post-content">
+                  <%= image_tag  "rails3.jpg" %>
+                  <h3><%= post.title%></h3><small>Posted by <%= post.user.name%> on <%= post.created_at.to_time.strftime('%B %e at %l : %M %p')%></small>
+                  <%= raw post.body.truncate(200) %>
+                  <%= link_to  "Read more", post_path(post), class:'btn btn-primary' %>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="post">
-                <img src="img/rails3.jpg">
-                <div class="pst-content">
-                  <h3>Lorem Ipsum</h3><small>Posted by Onzen Miluka</small>           
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ex odio, pulvinar et libero ultricies, facilisis commodo mauris. Morbi tincidunt nisl felis, vitae imperdiet est mollis vitae. Etiam ullamcorper diam a tincidunt finibus. Duis pretium porttitor turpis nec mattis. Nulla vehicula mauris elit, ac congue orci tincidunt id. </p>
-                  <a href="#" class="btn btn-primary"> Read more</a>
-                </div>
-              </div>
-              <div class="post">
-                <img src="img/rails3.jpg">
-                <div class="pst-content">
-                  <h3>Lorem Ipsum</h3><small>Posted by Onzen Miluka</small>           
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ex odio, pulvinar et libero ultricies, facilisis commodo mauris. Morbi tincidunt nisl felis, vitae imperdiet est mollis vitae. Etiam ullamcorper diam a tincidunt finibus. Duis pretium porttitor turpis nec mattis. Nulla vehicula mauris elit, ac congue orci tincidunt id. </p>
-                  <a href="#" class="btn btn-primary"> Read more</a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <% end %>
         </div>
-        <div class="col-md-4">
-          <div class="list-group">
-            <a href="#" class="list-group-item">News</a>
-            <a href="#" class="list-group-item">Releases</a>
-            <a href="#" class="list-group-item">Tutorials</a>
-            <a href="#" class="list-group-item">Events</a>
-          </div>
+      <% end %>
+      <% will_paginate @posts %>
+  <% else %>
+    <p>No post yet</p>
+  <% end %>
+</div>
+ 

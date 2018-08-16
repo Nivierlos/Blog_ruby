@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RBlog</title>
+    <title>rBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,63 @@
   </head>
 
   <body>
-  </head>
-  <a href="#" class:'btn btn-danger'> Read more</a>
-    <%= yield %>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">rBlog/Manager</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= params[:controller] == 'admin/posts' ? 'active' : ''%> ">
+            <%= link_to  "Posts", admin_posts_path %>
+          </li>
+          <li class="nav-item <%= params[:controller] == 'admin/categories' ? 'active' : ''%>">
+            <%= link_to  "Categories", admin_categories_path %>
+          </li>
+          <li class="nav-item <%params[:controller] == 'admin/users' ? 'active' : ''%>">
+            <%= link_to  "Users", admin_users_path %>
+          </li>
+         
+        </ul>
+        <%= render  "partials/admin/search" %>
+        
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well">
+            <div id="user-nav" class="pull-right">
+              <% if current_user %>
+                Logged in as <%= current_user.email%>
+                 <%= link_to  "Log Out", admin_logout_path %>
+              <% else %>
+                 <%= link_to "Log In", admin_login_path%>
+              <% end %>
+            </div>
+            <% if flash[:notice] %>
+              <div class="alert alert-success"><%= flash[:notice] %></div>
+            <% end %>
+            <% if flash[:alert] %>
+              <div class="alert alert-danger"><%= flash[:alert] %></div>
+            <% end %>
+            <%= yield %>
+          </div
+        </div>
+      </div>
+
+    </main><!-- /.container -->
+
+    <footer>
+      <p>Copyright &copy; 2018 rBlog | Onzen | <%= link_to  "Front end", posts_path %></p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
   </body>
 </html>

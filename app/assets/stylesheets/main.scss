@@ -4,6 +4,9 @@ body{
 	background: $background-color;
 	line-height: 1.6em;
 }
+nav .collapse>ul>li, form{
+	display: inline-block;
+}
 .navbar{
 	overflow: auto;
 	min-height: 100px;
@@ -11,6 +14,12 @@ body{
 	color: #fff;
 	font-size: 19px;
 	border-radius: 0;
+}
+.navbar ul, li{
+	display: inline;
+	text-decoration: none;
+	list-style: none;
+	padding: 20px;
 }
 .navbar h1{
 	margin: 10px 0 0 0;
@@ -22,32 +31,45 @@ body{
 }
 .navbar a:hover{
 	color: $secondary-color;
+	text-decoration: none;
 }
 .navbar ul{
 	margin-top: 22px;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navabr-nav > .active > a:hover{
 	background: none;
+	text-decoration: none;
 	color: $secondary-color !important;
+}
+.form-inline{
+	position: relative;
+	float: right;
 }
 .form-inline input[type='text']{
 	border-radius: 0;
 	height: 38px;
-	margin-right: 0;
+	margin: 0;
+	padding-right: 0px;
 }
 .form-inline .btn{
+	background: $primary-btn-color;
 	border: 0;
 	height: 38px;
 	margin-top: 0;
 	border-radius: 0;
-	margin-left: 0px;
+	margin: 0px;
+	padding: 10px;
 }
 .form-inline .form-control{
 	background: #f4f4f4;
+	margin: 0px;
+	padding-right: 0px;
 	border: 1px solid $primary-color;
 }
 .btn-primary{
 	background: $primary-btn-color;
+	display: block;
+	margin-top: 20px;
 }
 .btn{
 	border: none;
@@ -71,7 +93,7 @@ main{
 	padding: 20px;
 	box-sizing: border-box;
 }
-.post small{
+small{
 	background: $primary-color;
 	color: #fff;
 	display: block;
@@ -85,4 +107,8 @@ footer{
 	height: 60px;
 	padding-top: 20px;
 	margin-top: 20px;
+}
+
+.comment img{
+	width: 100%
 }

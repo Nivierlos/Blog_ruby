@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'sessions/new'
+ namespace :admin do
+    get 'login' => 'sessions#new', :as => 'login'
     get 'sessions/create'
   end
+  namespace :admin do
+    get 'logout' => 'sessions#destroy', :as => 'logout'
+  end 
   namespace :admin do
     get 'comments/new'
     get 'comments/create'
@@ -47,11 +50,14 @@ Rails.application.routes.draw do
   get 'posts/index'
   get 'posts/show'
 
-  resources :posts, :categories, :comments
+  resources :posts, :categories
 
   namespace :admin do
-    resources :posts, :categories, :comments, :users
+    resources :posts, :categories, :comments, :users, :sessions
   end
+   resources :posts do
+    resources :comments
+   end
   root 'posts#index' 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
